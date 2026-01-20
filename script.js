@@ -12,5 +12,5 @@ function validateForm() {
         return false;
     }
      
-    return true;
+    return true; 
 }
