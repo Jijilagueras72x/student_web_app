@@ -11,6 +11,6 @@ function validateForm() {
         alert("Grade must be between 0 and 100.");
         return false;
     }
-    
+     
     return true;
 }
