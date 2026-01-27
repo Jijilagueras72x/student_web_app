@@ -1,4 +1,6 @@
 // Function to check fields and show/hide elements progressively
+document.getElementById("studentListSection").classList.add("hidden");
+
 function isValidEmail(email) {
     let emailPattern = /^[^\s@]+@[^\s@]+\.com$/;
     return emailPattern.test(email);
@@ -92,7 +94,7 @@ function addStudent(name, date, subject, email, grade) {
     li.innerHTML = `<strong>${name}</strong> - ${subject}<br>
                     Date: ${date} | Email: ${email}<br>
                     Grade: ${grade} (${status})`;
-
+    document.getElementById("studentListSection").classList.remove("hidden");
     document.getElementById("studentList").appendChild(li);
 
     // Reset form fields
