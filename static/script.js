@@ -1,10 +1,4 @@
 // Function to check fields and show/hide elements progressively
-document.getElementById("studentListSection").classList.add("hidden");
-
-function isValidEmail(email) {
-    let emailPattern = /^[^\s@]+@[^\s@]+\.com$/;
-    return emailPattern.test(email);
-}
 function checkFields() {
     let name = document.getElementById("name").value.trim();
     let date = document.getElementById("date").value;
@@ -12,56 +6,51 @@ function checkFields() {
     let email = document.getElementById("email").value.trim();
     let grade = document.getElementById("grade").value;
 
-    // Name → Date
+    // Show date field if name is filled
     if (name !== "") {
-        dateField.classList.remove("hidden");
+        document.getElementById("dateField").classList.remove("hidden");
     } else {
-        dateField.classList.add("hidden");
-        subjectField.classList.add("hidden");
-        emailField.classList.add("hidden");
-        gradeField.classList.add("hidden");
-        submitBtn.classList.add("hidden");
-        return;
+        document.getElementById("dateField").classList.add("hidden");
+        document.getElementById("subjectField").classList.add("hidden");
+        document.getElementById("emailField").classList.add("hidden");
+        document.getElementById("gradeField").classList.add("hidden");
+        document.getElementById("submitBtn").classList.add("hidden");
     }
 
-    // Date → Subject
+    // Show subject field if date is filled
     if (date !== "") {
-        subjectField.classList.remove("hidden");
+        document.getElementById("subjectField").classList.remove("hidden");
     } else {
-        subjectField.classList.add("hidden");
-        emailField.classList.add("hidden");
-        gradeField.classList.add("hidden");
-        submitBtn.classList.add("hidden");
-        return;
+        document.getElementById("subjectField").classList.add("hidden");
+        document.getElementById("emailField").classList.add("hidden");
+        document.getElementById("gradeField").classList.add("hidden");
+        document.getElementById("submitBtn").classList.add("hidden");
     }
 
-    // Subject → Email
+    // Show email field if subject is selected
     if (subject !== "") {
-        emailField.classList.remove("hidden");
+        document.getElementById("emailField").classList.remove("hidden");
     } else {
-        emailField.classList.add("hidden");
-        gradeField.classList.add("hidden");
-        submitBtn.classList.add("hidden");
-        return;
+        document.getElementById("emailField").classList.add("hidden");
+        document.getElementById("gradeField").classList.add("hidden");
+        document.getElementById("submitBtn").classList.add("hidden");
     }
 
-    // ✅ Email must be VALID before showing grade
-    if (isValidEmail(email)) {
-        gradeField.classList.remove("hidden");
+    // Show grade/score field if all previous fields are filled
+    if (name !== "" && date !== "" && subject !== "" && email !== "") {
+        document.getElementById("gradeField").classList.remove("hidden");
     } else {
-        gradeField.classList.add("hidden");
-        submitBtn.classList.add("hidden");
-        return;
+        document.getElementById("gradeField").classList.add("hidden");
+        document.getElementById("submitBtn").classList.add("hidden");
     }
 
-    // Grade → Submit button
-    if (grade !== "") {
-        submitBtn.classList.remove("hidden");
+    // Show submit button if all fields are filled
+    if (name !== "" && date !== "" && subject !== "" && email !== "" && grade !== "") {
+        document.getElementById("submitBtn").classList.remove("hidden");
     } else {
-        submitBtn.classList.add("hidden");
+        document.getElementById("submitBtn").classList.add("hidden");
     }
 }
-
 
 function validateForm() {
     let name = document.getElementById("name").value.trim();
